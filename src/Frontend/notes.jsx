@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./style/Notes.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
 const Notes = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
@@ -19,7 +21,7 @@ const Notes = () => {
   const [isSavingTask, setIsSavingTask] = useState(false);
   const [isSavingNote, setIsSavingNote] = useState(false);
 
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+ 
 
   // Helper function to normalize date format to YYYY-MM-DD
   const normalizeDate = (dateInput) => {
