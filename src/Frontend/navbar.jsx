@@ -106,7 +106,7 @@ const Navbar = () => {
 
   const closeAuthPopup = () => {
     setShowAuthPopup(false);
-    setPendingNavigation(null);
+     
   };
 
   const handlePopupLogin = () => {
