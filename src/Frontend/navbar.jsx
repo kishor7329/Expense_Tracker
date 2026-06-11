@@ -67,14 +67,16 @@ const handleGoogleLogin = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/logout`);
+      const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      await axios.post(`${apiUrl}/api/auth/logout`);
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       setIsLoggedIn(false);
       setUser(null);
       navigate("/");
-    } catch (error) {
-      console.error("Logout error:", error);
     }
   };
 
