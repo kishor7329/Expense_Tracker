@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback,useRef } from "react";
 import axios from "axios";
 import "./style/Notes.css";
 
@@ -15,7 +15,7 @@ const Notes = () => {
   const [showNoteModal, setShowNoteModal] = useState(false);
   const [editingNote, setEditingNote] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+   const [error, setError] = useState(null);
   const [isSavingTask, setIsSavingTask] = useState(false);
   const [isSavingNote, setIsSavingNote] = useState(false);
 

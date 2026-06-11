@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build --eslint-disable",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

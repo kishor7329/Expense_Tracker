@@ -37,7 +37,7 @@ const Goals = () => {
   const [editSaved, setEditSaved] = useState("");
   const [selectedCardForAnalytics, setSelectedCardForAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+ const [error, setError] = useState(null);  
   const [totalSaved, setTotalSaved] = useState(0);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [isUpdatingGoal, setIsUpdatingGoal] = useState(false);
@@ -286,16 +286,7 @@ const Goals = () => {
   };
 
   // Enhanced Total Saved calculation with better error handling
-  const getTotalSaved = () => {
-    if (!goalsList || goalsList.length === 0) return 0;
-    
-    return goalsList.reduce((sum, g) => {
-      const savedAmount = g.saved_amount;
-      if (savedAmount === null || savedAmount === undefined || savedAmount === '') return sum;
-      const parsed = parseFloat(savedAmount);
-      return sum + (isNaN(parsed) ? 0 : parsed);
-    }, 0);
-  };
+ 
 
   const getProgressPercentage = (goal) => {
     if (!goal || goal.target_amount === 0) return 0;
