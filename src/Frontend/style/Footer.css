@@ -1,0 +1,186 @@
+/* Footer.css */
+::-webkit-scrollbar {
+    display: none;
+}
+.footer {
+     
+         
+        
+    background: rgba(7, 7, 7, 0.95);
+    backdrop-filter: blur(10px);
+    color: rgb(240, 201, 201);
+    padding: 3rem 2rem 1rem;
+    position: relative;
+    z-index: 10;
+   
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Brand Section */
+.footer-brand {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.footer-description {
+    color: #e2e8f0;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+}
+
+/* Accordion Styles */
+.footer-accordion {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.accordion-header {
+    margin: 0;
+}
+
+.accordion-trigger {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 1.25rem 0;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.accordion-trigger::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: transform 0.3s ease;
+    color: #667eea;
+}
+
+.accordion-item.active .accordion-trigger::after {
+    content: '−';
+    transform: rotate(0deg);
+}
+
+.accordion-trigger:hover {
+    color: #60efff;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+   
+    padding: 0;
+     
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px;
+    padding-bottom: 1.25rem;
+   
+}
+
+.accordion-content p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 1.45rem;
+    margin: 0;
+    transform: translateY(-10px);
+      
+}
+
+/* Copyright */
+.footer-copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    font-size: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 1.5rem 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1.85rem;
+    }
+
+    .footer-description {
+        font-size: 1.35rem;
+        padding: 0 1rem;
+    }
+
+    .accordion-trigger {
+        font-size: 1.35rem;
+        padding: 1rem 0;
+    }
+
+    .accordion-content p {
+        font-size: 1.35rem;
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1.6rem;
+    }
+
+    .accordion-trigger {
+        font-size: 1.45rem;
+        padding-right: 1rem;
+    }
+
+    .accordion-trigger::after {
+        font-size: 1.55rem;
+    }
+
+    .accordion-content p {
+        font-size: 1.55rem;
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 500px;
+    }
+}
+
+/* Optional: Add JavaScript for accordion functionality */
+/* The CSS above works with the JSX below that includes active state management */

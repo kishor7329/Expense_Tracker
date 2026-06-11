@@ -1,0 +1,240 @@
+/* Homepage.css */
+.homepage-container {
+    position: relative;
+    width: 100%;
+    /* min-height: calc(100vh - 72px); */
+    height: 100vh;
+    /* Adjust based on your navbar height */
+    overflow: hidden;
+    overflow-x: hidden !important;
+}
+
+/* Content wrapper - ensures text is above the canvas */
+.homepage-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 200px;
+    }
+}
+/* Homepage.css - Only Text Styling */
+
+/* Container for vanta background */
+/* Homepage.css - Left aligned text like Discord */
+
+/* Container for vanta background */
+.homepage-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Overlay to keep text above birds */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 10;
+     
+}
+
+/* Content wrapper - left aligned */
+.hero-content {
+    max-width: 1200px;
+    padding-left: 2rem;
+   
+}
+
+/* Main Catchy Title - Bold, increased width */
+.catchy-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+    letter-spacing: -0.02em;
+    max-width: 800px;
+}
+
+/* Supportive Text */
+.supportive-text {
+    font-size: 1.65rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0;
+}
+
+ 
+ 
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-content {
+        padding-left: 5rem;
+    }
+
+    .catchy-title {
+        font-size: 4.5rem;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .catchy-title {
+        font-size: 2.5rem;
+        max-width: 100%;
+    }
+
+         .supportive-text {
+             font-size: 1.25rem;
+             padding: 1rem;
+             background: rgba(0, 0, 0, 0.5);
+             border-radius: 12px;
+             display: inline-block;
+             margin-top: 1rem;
+         }
+
+    .supportive-text br {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .catchy-title {
+        font-size: 1.8rem;
+    }
+
+    .supportive-text {
+        font-size: 1.45rem;
+        padding: 0.8rem;
+    }
+}
