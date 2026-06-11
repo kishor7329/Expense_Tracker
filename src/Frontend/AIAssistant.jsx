@@ -140,7 +140,7 @@ const AIAssistant = () => {
  try {
    const token = localStorage.getItem("token");
    const response = await axios.post(
-     "http://localhost:5000/api/ai/chat",
+     `${process.env.REACT_APP_API_URL}/api/ai/chat`,
      {
        message: input,
        model: selectedModel,

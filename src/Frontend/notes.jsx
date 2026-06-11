@@ -19,7 +19,7 @@ const Notes = () => {
   const [isSavingTask, setIsSavingTask] = useState(false);
   const [isSavingNote, setIsSavingNote] = useState(false);
 
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
   // Helper function to normalize date format to YYYY-MM-DD
   const normalizeDate = (dateInput) => {

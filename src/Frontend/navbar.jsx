@@ -12,9 +12,9 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [showAuthPopup, setShowAuthPopup] = useState(false);
 
-  const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
-  };
+const handleGoogleLogin = () => {
+  window.location.href = `${process.env.REACT_APP_API_URL}/api/auth/google`;
+};
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -67,7 +67,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout");
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/logout`);
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       setIsLoggedIn(false);
