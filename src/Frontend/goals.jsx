@@ -37,7 +37,7 @@ const Goals = () => {
   const [editSaved, setEditSaved] = useState("");
   const [selectedCardForAnalytics, setSelectedCardForAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
- const [error, setError] = useState(null);  
+ const [, setError] = useState(null);  
   const [totalSaved, setTotalSaved] = useState(0);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [isUpdatingGoal, setIsUpdatingGoal] = useState(false);
