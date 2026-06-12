@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./style/Notes.css";
 
-const API_URL = process.env.REACT_APP_API_URL
-  ? `${process.env.REACT_APP_API_URL}/api`
-  : "http://localhost:5000/api";
+// Temporarily hardcode for production
+const API_URL = "https://expense-tracker-ek7h.onrender.com/api";
 
 // ADD THIS DEBUG LINE:
 console.log("🔍 API_URL Debug:", {
