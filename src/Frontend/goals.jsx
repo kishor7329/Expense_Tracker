@@ -23,8 +23,10 @@ ChartJS.register(
   ArcElement,
 );
 
-// Temporarily hardcode for production
-const API_URL = "https://expense-tracker-ek7h.onrender.com/api";
+const API_URL = process.env.REACT_APP_API_URL
+  ? `${process.env.REACT_APP_API_URL}/api`
+  : "http://localhost:5000/api";
+
 
 // ADD THIS DEBUG LINE:
 console.log("🔍 Goals API_URL Debug:", {
