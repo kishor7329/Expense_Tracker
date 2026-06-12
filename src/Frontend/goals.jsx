@@ -23,9 +23,23 @@ ChartJS.register(
   ArcElement,
 );
 
-const API_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : "http://localhost:5000/api";
+const API_URL = process.env.REACT_APP_API_URL
+  ? `${process.env.REACT_APP_API_URL}/api`
+  : "http://localhost:5000/api";
+
+// ADD THIS DEBUG LINE:
+console.log("🔍 Goals API_URL Debug:", {
+  envVar: process.env.REACT_APP_API_URL,
+  finalURL: API_URL,
+  isLocalhost: API_URL.includes("localhost"),
+});
 
 const Goals = () => {
+  // ADD THIS AT THE VERY TOP:
+  console.log("🔍🔍🔍 ENVIRONMENT DEBUG 🔍🔍🔍");
+  console.log("REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
+  console.log("All env vars:", process.env);
+  console.log("🔍🔍🔍 END ENVIRONMENT DEBUG 🔍🔍🔍");
   const auroraRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState("");
@@ -37,14 +51,13 @@ const Goals = () => {
   const [editingGoal, setEditingGoal] = useState(null);
   const [editAmount, setEditAmount] = useState("");
   const [editSaved, setEditSaved] = useState("");
-  const [selectedCardForAnalytics, setSelectedCardForAnalytics] = useState(null);
+  const [selectedCardForAnalytics, setSelectedCardForAnalytics] =
+    useState(null);
   const [loading, setLoading] = useState(true);
- const [, setError] = useState(null);  
+  const [, setError] = useState(null);
   const [totalSaved, setTotalSaved] = useState(0);
   const [isSavingGoal, setIsSavingGoal] = useState(false);
   const [isUpdatingGoal, setIsUpdatingGoal] = useState(false);
-
- 
 
   const fetchGoals = useCallback(async () => {
     const token = localStorage.getItem("token");
@@ -52,7 +65,7 @@ const Goals = () => {
       setLoading(false);
       return;
     }
-    
+
     try {
       setError(null);
       const response = await axios.get(`${API_URL}/goals`, {
@@ -60,7 +73,7 @@ const Goals = () => {
       });
       if (response.data.success) {
         // Ensure all numeric values are proper numbers
-        const formattedGoals = response.data.goals.map(goal => ({
+        const formattedGoals = response.data.goals.map((goal) => ({
           ...goal,
           target_amount: parseFloat(goal.target_amount) || 0,
           saved_amount: parseFloat(goal.saved_amount) || 0,
@@ -83,15 +96,20 @@ const Goals = () => {
   useEffect(() => {
     const calculateTotalSaved = () => {
       if (!goalsList || goalsList.length === 0) return 0;
-      
+
       return goalsList.reduce((sum, g) => {
         const savedAmount = g.saved_amount;
-        if (savedAmount === null || savedAmount === undefined || savedAmount === '') return sum;
+        if (
+          savedAmount === null ||
+          savedAmount === undefined ||
+          savedAmount === ""
+        )
+          return sum;
         const parsed = parseFloat(savedAmount);
         return sum + (isNaN(parsed) ? 0 : parsed);
       }, 0);
     };
-    
+
     setTotalSaved(calculateTotalSaved());
   }, [goalsList]);
 
@@ -108,17 +126,22 @@ const Goals = () => {
 
   // Currency formatting with proper locale
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
       minimumFractionDigits: 0,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     }).format(amount);
   };
 
   const goalOptions = [
-    "Education", "Travel", "Emergency Fund",
-    "Electronics", "Vehicle", "Investment", "Personal",
+    "Education",
+    "Travel",
+    "Emergency Fund",
+    "Electronics",
+    "Vehicle",
+    "Investment",
+    "Personal",
   ];
 
   const handleSetGoal = () => {
@@ -154,7 +177,7 @@ const Goals = () => {
             target_amount: parseFloat(response.data.goal.target_amount),
             saved_amount: parseFloat(response.data.goal.saved_amount) || 0,
           };
-          setGoalsList(prev => [...prev, newGoal]);
+          setGoalsList((prev) => [...prev, newGoal]);
           setShowModal(false);
           resetForm();
         }
@@ -191,7 +214,7 @@ const Goals = () => {
           headers: { Authorization: `Bearer ${token}` },
         },
       );
-      setGoalsList(prev =>
+      setGoalsList((prev) =>
         prev.map((goal) =>
           goal.id === id ? { ...goal, status: "completed" } : goal,
         ),
@@ -233,7 +256,7 @@ const Goals = () => {
             target_amount: parseFloat(response.data.goal.target_amount),
             saved_amount: parseFloat(response.data.goal.saved_amount) || 0,
           };
-          setGoalsList(prev =>
+          setGoalsList((prev) =>
             prev.map((goal) =>
               goal.id === editingGoal.id ? updatedGoal : goal,
             ),
@@ -263,7 +286,7 @@ const Goals = () => {
         await axios.delete(`${API_URL}/goals/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setGoalsList(prev => prev.filter((goal) => goal.id !== id));
+        setGoalsList((prev) => prev.filter((goal) => goal.id !== id));
         if (selectedCardForAnalytics?.id === id) {
           setSelectedCardForAnalytics(null);
         }
@@ -280,7 +303,8 @@ const Goals = () => {
   };
 
   const getActiveGoals = () => goalsList.filter((g) => g.status === "active");
-  const getCompletedGoals = () => goalsList.filter((g) => g.status === "completed");
+  const getCompletedGoals = () =>
+    goalsList.filter((g) => g.status === "completed");
 
   const getUpcomingDeadlines = () => {
     const today = new Date();
@@ -288,7 +312,6 @@ const Goals = () => {
   };
 
   // Enhanced Total Saved calculation with better error handling
- 
 
   const getProgressPercentage = (goal) => {
     if (!goal || goal.target_amount === 0) return 0;
@@ -437,14 +460,22 @@ const Goals = () => {
     },
   };
 
- 
- 
-
-  
-
   if (loading) {
     return (
-      <div className="goals-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', color: 'white', flexDirection: 'column', backgroundColor: '#050505', position: 'relative', overflow: 'hidden' }}>
+      <div
+        className="goals-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          color: "white",
+          flexDirection: "column",
+          backgroundColor: "#050505",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
         <div className="aurora-background" ref={auroraRef}>
           <div className="aurora-layer aurora-layer-1"></div>
           <div className="aurora-layer aurora-layer-2"></div>
@@ -452,8 +483,26 @@ const Goals = () => {
           <div className="aurora-layer aurora-layer-4"></div>
           <div className="aurora-overlay"></div>
         </div>
-        <div style={{ zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div className="spinner" style={{ width: '50px', height: '50px', border: '5px solid rgba(255,255,255,0.1)', borderTopColor: '#00ff87', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '20px' }}></div>
+        <div
+          style={{
+            zIndex: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <div
+            className="spinner"
+            style={{
+              width: "50px",
+              height: "50px",
+              border: "5px solid rgba(255,255,255,0.1)",
+              borderTopColor: "#00ff87",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+              marginBottom: "20px",
+            }}
+          ></div>
           <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
           <h2>Loading your goals...</h2>
         </div>
@@ -474,7 +523,9 @@ const Goals = () => {
       <div className="goals-content">
         <div className="headline-section">
           <h1 className="goals-title">🎯 Set Your Financial Goals</h1>
-          <p className="goals-subtitle">Dream it, Plan it, Achieve it with SynTropy</p>
+          <p className="goals-subtitle">
+            Dream it, Plan it, Achieve it with SynTropy
+          </p>
           <button className="set-goal-btn" onClick={handleSetGoal}>
             ✨ Set Goals Now
           </button>
@@ -495,9 +546,7 @@ const Goals = () => {
           </div>
           <div className="analytics-card">
             <h3>Total Saved</h3>
-            <p className="analytics-number">
-              {formatCurrency(totalSaved)}
-            </p>
+            <p className="analytics-number">{formatCurrency(totalSaved)}</p>
           </div>
         </div>
 
@@ -517,7 +566,10 @@ const Goals = () => {
         </div>
 
         <div className="goals-list">
-          {(activeTab === "active" ? getActiveGoals() : getCompletedGoals()).map((goal) => (
+          {(activeTab === "active"
+            ? getActiveGoals()
+            : getCompletedGoals()
+          ).map((goal) => (
             <div
               key={goal.id}
               className={`goal-card ${selectedCardForAnalytics?.id === goal.id ? "selected" : ""}`}
@@ -581,7 +633,9 @@ const Goals = () => {
                 </p>
               </div>
               <div className="goal-deadline">
-                <span>📅 Deadline: {new Date(goal.deadline).toLocaleDateString()}</span>
+                <span>
+                  📅 Deadline: {new Date(goal.deadline).toLocaleDateString()}
+                </span>
               </div>
             </div>
           ))}
@@ -657,7 +711,11 @@ const Goals = () => {
                 <button className="cancel-btn" onClick={handleCancel}>
                   Cancel
                 </button>
-                <button className="submit-btn" onClick={handleSubmitGoal} disabled={isSavingGoal}>
+                <button
+                  className="submit-btn"
+                  onClick={handleSubmitGoal}
+                  disabled={isSavingGoal}
+                >
                   {isSavingGoal ? "Saving..." : "Save Goal"}
                 </button>
               </div>
@@ -698,7 +756,11 @@ const Goals = () => {
                 >
                   Cancel
                 </button>
-                <button className="submit-btn" onClick={handleUpdateGoal} disabled={isUpdatingGoal}>
+                <button
+                  className="submit-btn"
+                  onClick={handleUpdateGoal}
+                  disabled={isUpdatingGoal}
+                >
                   {isUpdatingGoal ? "Updating..." : "Update Goal"}
                 </button>
               </div>
@@ -708,6 +770,6 @@ const Goals = () => {
       </div>
     </div>
   );
-};
+};;
 
 export default Goals;

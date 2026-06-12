@@ -13,8 +13,14 @@ const Navbar = () => {
   const [showAuthPopup, setShowAuthPopup] = useState(false);
 
 const handleGoogleLogin = () => {
+  // ADD THIS DEBUG LINE:
+  console.log("🔍 Google Auth URL Debug:", {
+    envVar: process.env.REACT_APP_API_URL,
+    authURL: `${process.env.REACT_APP_API_URL}/api/auth/google`,
+    isLocalhost: process.env.REACT_APP_API_URL?.includes("localhost"),
+  });
   window.location.href = `${process.env.REACT_APP_API_URL}/api/auth/google`;
-};
+};;
 
   useEffect(() => {
     const token = localStorage.getItem("token");

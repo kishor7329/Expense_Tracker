@@ -139,6 +139,12 @@ const AIAssistant = () => {
 
  try {
    const token = localStorage.getItem("token");
+   // ADD THIS DEBUG LINE:
+   console.log("🔍 AI Assistant API Debug:", {
+     envVar: process.env.REACT_APP_API_URL,
+     fullURL: `${process.env.REACT_APP_API_URL}/api/ai/chat`,
+     isLocalhost: process.env.REACT_APP_API_URL?.includes("localhost"),
+   });
    const response = await axios.post(
      `${process.env.REACT_APP_API_URL}/api/ai/chat`,
      {
