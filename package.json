@@ -39,7 +39,8 @@
     "start": "craco start",
     "build": "craco build --eslint-disable",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:backend": "node src/Backend/server.js"
   },
   "eslintConfig": {
     "extends": [
