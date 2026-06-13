@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../../.env" });
+require("dotenv").config();
  
 
 console.log("API Key exists?", process.env.MISTRAL_API_KEY ? "YES" : "NO");
