@@ -587,21 +587,21 @@
 
 @media (max-width: 768px) {
     .ai-assistant-container {
-        height: calc(100dvh - 64px);
-        top: 64px;
+        height: calc(100dvh - 88px);
+        top: 88px;
     }
 
     .sidebar-overlay {
-        top: 64px;
-        height: calc(100dvh - 64px);
+        top: 88px;
+        height: calc(100dvh - 88px);
     }
 
     .ai-sidebar {
         position: fixed;
-        top: 64px;
+        top: 88px;
         left: 0;
         width: min(82vw, 320px);
-        height: calc(100dvh - 64px);
+        height: calc(100dvh - 88px);
         z-index: 120;
     }
 
@@ -669,14 +669,14 @@
 
 @media (max-width: 480px) {
     .ai-assistant-container {
-        height: calc(100dvh - 58px);
-        top: 58px;
+        height: calc(100dvh - 88px);
+        top: 88px;
     }
 
     .sidebar-overlay,
     .ai-sidebar {
-        top: 58px;
-        height: calc(100dvh - 58px);
+        top: 88px;
+        height: calc(100dvh - 88px);
     }
 
     .input-area {

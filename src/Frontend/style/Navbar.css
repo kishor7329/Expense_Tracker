@@ -30,7 +30,7 @@ max-width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
      border:none;
      outline:none;
     transition: all 0.3s ease;
@@ -40,7 +40,7 @@ max-width: 100%;
 
 .navbar.scrolled {
     background: rgba(17, 25, 40, 0.95);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     padding: 0.75rem 2rem;
 }
 
