@@ -653,8 +653,18 @@ max-width: 100%;
  }
 
  .google-icon {
-     width: 18px;
-     height: 18px;
+     width: 20px;
+     height: 20px;
+     border-radius: 50%;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     background: conic-gradient(from -45deg, #4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0);
+     color: white;
+     font-size: 0.78rem;
+     font-weight: 800;
+     line-height: 1;
+     flex: 0 0 20px;
  }
 
  .auth-divider {

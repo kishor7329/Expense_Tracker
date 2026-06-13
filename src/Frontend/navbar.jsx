@@ -164,11 +164,7 @@ const handleGoogleLogin = () => {
           <div className="auth-buttons">
             {!isLoggedIn ? (
               <button className="btn-google" onClick={handleGoogleLogin}>
-                <img
-                  src="/google-icon.svg"
-                  alt="Google"
-                  className="google-icon"
-                />
+                <span className="google-icon" aria-hidden="true">G</span>
                 Continue with Google
               </button>
             ) : (

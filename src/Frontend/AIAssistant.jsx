@@ -83,6 +83,10 @@ const AIAssistant = () => {
     setChatHistory([newChat, ...chatHistory]);
     setCurrentChatId(newChat.id);
     setMessages([]);
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    }
+    setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const loadChat = (chatId) => {
@@ -347,6 +351,14 @@ const AIAssistant = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
+              onFocus={() => {
+                setTimeout(() => {
+                  inputRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                  });
+                }, 250);
+              }}
               placeholder="Ask me anything about Expenses..."
               rows={1}
               disabled={isLoading}
@@ -355,8 +367,9 @@ const AIAssistant = () => {
               className={`send-btn ${isLoading ? "disabled" : ""}`}
               onClick={sendMessage}
               disabled={isLoading}
+              aria-label="Send message"
             >
-              <img src="/sendBtn.svg" alt="Send" className="send-btn-icon" />
+              <span className="send-btn-icon">➤</span>
             </button>
           </div>
         </div>

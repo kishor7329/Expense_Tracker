@@ -8,13 +8,13 @@
 
 .ai-assistant-container {
     display: flex;
-    height: 100vh;
+    height: calc(100dvh - 70px);
     width: 100%;
     background: black;
     position: fixed;
-    top: 0;
+    top: 70px;
     left: 0;
-    padding-top: 70px;
+    overflow: hidden;
 }
 
 /* ========== SIDEBAR ========== */
@@ -183,9 +183,11 @@
     flex: 1;
     overflow-y: auto;
     padding: 1.5rem;
+    padding-bottom: 1.75rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    min-height: 0;
 }
 
 /* Welcome Screen */
@@ -333,9 +335,12 @@
 /* ========== INPUT AREA ========== */
 .input-area {
     padding: 1rem 1.5rem 1.5rem;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
     background: rgba(17, 25, 40, 0.95);
     border-top: 1px solid rgba(96, 239, 255, 0.2);
     flex-shrink: 0;
+    position: relative;
+    z-index: 30;
 }
 
 /* Model Dropdown - For All Devices */
@@ -430,6 +435,7 @@
     min-height: 44px;
     max-height: 100px;
     line-height: 1.4;
+    overflow-y: auto;
 }
 
 .input-wrapper textarea:focus {
@@ -442,18 +448,34 @@
     color: #94a3b8;
 }
 
-.send-btn-icon {
-    width: 24px;
-    height: 24px;
+.send-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60efff, #00ff87);
+    color: #07111f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 800;
     transition: transform 0.2s ease;
 }
 
-.send-btn:hover .send-btn-icon {
+.send-btn:hover {
     transform: scale(1.1);
 }
 
-.send-btn.disabled .send-btn-icon {
+.send-btn-icon {
+    display: block;
+    transform: translateX(1px);
+    line-height: 1;
+}
+
+.send-btn.disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -560,6 +582,113 @@
 
     .message-time {
         font-size: 0.6rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-assistant-container {
+        height: calc(100dvh - 64px);
+        top: 64px;
+    }
+
+    .sidebar-overlay {
+        top: 64px;
+        height: calc(100dvh - 64px);
+    }
+
+    .ai-sidebar {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: min(82vw, 320px);
+        height: calc(100dvh - 64px);
+        z-index: 120;
+    }
+
+    .ai-sidebar.closed {
+        transform: translateX(-100%);
+        width: min(82vw, 320px);
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .sidebar-overlay {
+        z-index: 110;
+    }
+
+    .chat-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .messages-area {
+        padding: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .message {
+        max-width: 94%;
+    }
+
+    .welcome-screen {
+        justify-content: flex-start;
+        padding-top: 2rem;
+    }
+
+    .welcome-icon {
+        font-size: 3rem;
+    }
+
+    .welcome-screen h2 {
+        font-size: 1.55rem;
+    }
+
+    .welcome-screen p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .input-area {
+        padding: 0.8rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    .model-dropdown-btn {
+        min-height: 48px;
+        font-size: 1rem;
+    }
+
+    .input-wrapper {
+        gap: 0.55rem;
+    }
+
+    .input-wrapper textarea {
+        min-height: 48px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-assistant-container {
+        height: calc(100dvh - 58px);
+        top: 58px;
+    }
+
+    .sidebar-overlay,
+    .ai-sidebar {
+        top: 58px;
+        height: calc(100dvh - 58px);
+    }
+
+    .input-area {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    }
+
+    .send-btn {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
     }
 }
 
