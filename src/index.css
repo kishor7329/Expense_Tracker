@@ -8,5 +8,13 @@ html,
 body {
   overflow-x: hidden;
   width: 100%;
+  min-height: 100%;
+  background: #000;
+}
+
+#root,
+.App {
+  min-height: 100vh;
+  background: #000;
 }
  
