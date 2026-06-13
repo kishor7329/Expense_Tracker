@@ -19,7 +19,7 @@ max-width: 100%;
 /* ========== NAVBAR STYLES ========== */
 .navbar {
     width: 100%;
-    background:none;
+    background: rgba(17, 25, 40, 0.95);
      
      
     padding: 1rem 2rem;
