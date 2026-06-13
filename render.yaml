@@ -18,7 +18,7 @@ services:
       - key: GOOGLE_CLIENT_SECRET
         sync: false
       - key: GOOGLE_CALLBACK_URL
-        value: https://syntropy-backend.onrender.com/api/auth/google/callback
+        value: https://expense-tracker-9fpm.onrender.com/api/auth/google/callback
       - key: MISTRAL_API_KEY
         sync: false
       - key: FRONTEND_URL

@@ -32,9 +32,9 @@ syntropy/
 Use these placeholders until your real deployment URLs are created:
 
 ```text
-Render backend: https://syntropy-backend.onrender.com
+Render backend: https://expense-tracker-9fpm.onrender.com
 Vercel frontend: https://your-vercel-app.vercel.app
-Google callback: https://syntropy-backend.onrender.com/api/auth/google/callback
+Google callback: https://expense-tracker-9fpm.onrender.com/api/auth/google/callback
 ```
 
 After Vercel gives you the real frontend URL, replace `https://your-vercel-app.vercel.app` in Render with the real URL.
@@ -62,9 +62,9 @@ REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
 3. Choose **Blueprint** if you want Render to use `render.yaml`.
 4. Connect your GitHub repository.
 5. Render will create:
-   - `syntropy-backend`
+   - `expense-tracker-9fpm`
    - `syntropy-db`
-6. In the `syntropy-backend` environment variables, set:
+6. In the `expense-tracker-9fpm` environment variables, set:
 
 ```text
 GOOGLE_CLIENT_ID=your_google_client_id
@@ -79,7 +79,7 @@ FRONTEND_URL=https://your-real-vercel-url.vercel.app
 8. Test this URL in the browser:
 
 ```text
-https://syntropy-backend.onrender.com/
+https://expense-tracker-9fpm.onrender.com/
 ```
 
 Expected response:
@@ -104,7 +104,7 @@ Install Command: npm install
 4. Add these Vercel environment variables:
 
 ```text
-REACT_APP_API_URL=https://syntropy-backend.onrender.com
+REACT_APP_API_URL=https://expense-tracker-9fpm.onrender.com
 REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
 ```
 
@@ -133,7 +133,7 @@ Authorized redirect URIs:
 
 ```text
 http://localhost:5000/api/auth/google/callback
-https://syntropy-backend.onrender.com/api/auth/google/callback
+https://expense-tracker-9fpm.onrender.com/api/auth/google/callback
 ```
 
 ## What Was Changed for Deployment

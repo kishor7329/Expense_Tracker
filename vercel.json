@@ -35,6 +35,6 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://syntropy-backend.onrender.com"
+    "REACT_APP_API_URL": "https://expense-tracker-9fpm.onrender.com"
   }
 }
